@@ -1,0 +1,63 @@
+<div class="componentcontainer">
+    <fieldset class="schedulerborder">
+        <legend class="schedulerborder">TEAMS:</legend>
+        <div class="gestionbuttons">
+            <app-managementbuttons (onGoToCreate)="gotoCreate()" [canCreate]="true" (onGoToEdit)="gotoEdit()" [canEdit]="true" (onDelete)="onDelete()" [canDelete]="true">
+            </app-managementbuttons>
+        </div>
+
+        <div style="width: 100%;" [formGroup]="form">
+            <mat-form-field style="margin-left: 3%;">
+                <mat-label>Name</mat-label>
+                <input matInput #input formControlName="name">
+            </mat-form-field>
+            <mat-form-field style="margin-left: 3%;">
+                <mat-label>Country</mat-label>
+                <input matInput #input formControlName="country">
+            </mat-form-field>
+            <button mat-raised-button style="margin-left: 1%;" (click)="filter()" matTooltip="Realizar búsqueda" matTooltipPosition="above">Search</button>
+            <button mat-raised-button style="margin-left: 1%;" (click)="clean()" matTooltip="Limpiar búsqueda" matTooltipPosition="above">Clean</button>
+        </div>
+
+        <div class="mat-elevation-z8">
+            <table mat-table [dataSource]="dataSource" matSort style="width: 100%">
+                <ng-container matColumnDef="shieldPhoto">
+                    <mat-header-cell *matHeaderCellDef> Shield Photo </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> <img style="width: 50%;" [src]="row.shieldPhoto" /> </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="name">
+                    <mat-header-cell class="" *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="country">
+                    <mat-header-cell class="" *matHeaderCellDef mat-sort-header> Country </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.country}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="nameHistoricalRivalTeam">
+                    <mat-header-cell class="" *matHeaderCellDef mat-sort-header> Historical Rival Team </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.nameHistoricalRivalTeam != null ? row.nameHistoricalRivalTeam : ""}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="numChampionsLeague">
+                    <mat-header-cell class="" *matHeaderCellDef mat-sort-header> Champions Titles </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.numChampionsLeague}} </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{hovered: row.hovered, highlighted: row.highlighted}" (click)="highlight(row)" (mouseover)="row.hovered = true" (mouseout)="row.hovered = false"></mat-row>
+            </table>
+            <mat-card *ngIf="isLoading" style="display: flex; justify-content: center; align-items: center">
+                <div>
+                    <mat-progress-spinner mode="indeterminate">
+                    </mat-progress-spinner>
+                    <p style="padding-top: 15px">Loading...</p>
+                </div>
+            </mat-card>
+            <mat-paginator [pageSize]="paginationService.pageCount" [pageSizeOptions]="paginationService.selectItemsPerPage" [length]="totalCount">
+            </mat-paginator>
+        </div>
+    </fieldset>
+</div>

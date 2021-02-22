@@ -1,0 +1,18 @@
+.login-cabecera {
+    color: rgb(77, 0, 13);
+    font-weight: bold;
+    font-size: 1em;
+    line-height: inherit;
+    padding-left: 0;
+    margin-bottom: 15px;
+    text-align: center;
+    /* padding-left: 30px; */
+    border-bottom: 1px solid #e9eaf4;
+    background: none;
+}
+
+.colorButtons:hover {
+    color: #fff;
+    background-color: #225d91 !important;
+    border-color: #225d91;
+}

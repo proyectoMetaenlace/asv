@@ -1,0 +1,3 @@
+FROM postgres
+
+#ADD ./docker/conf/pg_hba.conf /var/lib/postgresql/data/pgdata/pg_hba.conf

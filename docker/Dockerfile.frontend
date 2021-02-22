@@ -1,0 +1,8 @@
+FROM nginx:1.19.6-alpine
+
+RUN rm -rf /etc/nginx/conf.d/*
+
+ADD ./asvAngular/dist/asv /DevOps/project
+ADD ./docker/conf/asv.conf /etc/nginx/conf.d/asv.conf
+WORKDIR /DevOps/project
+

@@ -1,0 +1,15 @@
+export * from './basicErrorController.service';
+import { BasicErrorControllerService } from './basicErrorController.service';
+export * from './competitionController.service';
+import { CompetitionControllerService } from './competitionController.service';
+export * from './journeyCompetitionController.service';
+import { JourneyCompetitionControllerService } from './journeyCompetitionController.service';
+export * from './playoffCompetitionController.service';
+import { PlayoffCompetitionControllerService } from './playoffCompetitionController.service';
+export * from './playoffJourneyCompetitionController.service';
+import { PlayoffJourneyCompetitionControllerService } from './playoffJourneyCompetitionController.service';
+export * from './teamController.service';
+import { TeamControllerService } from './teamController.service';
+export * from './userController.service';
+import { UserControllerService } from './userController.service';
+export const APIS = [BasicErrorControllerService, CompetitionControllerService, JourneyCompetitionControllerService, PlayoffCompetitionControllerService, PlayoffJourneyCompetitionControllerService, TeamControllerService, UserControllerService];

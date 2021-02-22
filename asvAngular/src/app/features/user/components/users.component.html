@@ -1,0 +1,36 @@
+<div class="componentcontainer">
+    <fieldset class="schedulerborder">
+        <legend class="schedulerborder">USERS:</legend>
+        <div class="mat-elevation-z8">
+            <table mat-table [dataSource]="dataSource" matSort style="width: 100%">
+                <ng-container matColumnDef="username">
+                    <mat-header-cell class="" *matHeaderCellDef mat-sort-header> Username </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.username}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="name">
+                    <mat-header-cell class="" *matHeaderCellDef mat-sort-header> Firstname </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="lastname">
+                    <mat-header-cell class="" *matHeaderCellDef mat-sort-header> Lastname </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.lastName}}
+                    </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;" (mouseover)="row.hovered = true" (mouseout)="row.hovered = false"></mat-row>
+            </table>
+            <mat-card *ngIf="isLoading" style="display: flex; justify-content: center; align-items: center">
+                <div>
+                    <mat-progress-spinner mode="indeterminate">
+                    </mat-progress-spinner>
+                    <p style="padding-top: 15px">Loading...</p>
+                </div>
+            </mat-card>
+            <mat-paginator [pageSize]="paginationService.pageCount" [pageSizeOptions]="paginationService.selectItemsPerPage" [length]="totalCount">
+            </mat-paginator>
+        </div>
+    </fieldset>
+</div>

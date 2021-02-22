@@ -1,0 +1,74 @@
+<div class="componentcontainer">
+    <fieldset class="schedulerborder">
+        <legend class="schedulerborder etiqueta-cabeceratabla">DETAILS TEAM:</legend>
+        <fieldset class="schedulerborder">
+            <legend class="schedulerbordersecondlevel etiqueta-cabeceratabla">{{action}} Team:</legend>
+            <div class="row">
+                <div class="col-6 col-md-2">
+                    <div class="form-group">
+                        <label for="name" class="mr-sm-2">Shield</label>
+                        <img style="width: 50%;" [src]="team.shieldPhoto" />
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="form-group">
+                        <label for="name" class="mr-sm-2">*Name</label>
+                        <input type="text" class="form-control" id="name" name="name" [(ngModel)]="team.name" />
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="form-group">
+                        <label for="country" class="mr-sm-2">*Country</label>
+                        <input type="text" class="form-control" id="country" name="country" [(ngModel)]="team.country" />
+                    </div>
+                </div>
+
+                <div class="col-6 col-sm-6 col-lg-3">
+                    <div>
+                        <label for="historicalRivalTeam" class="mr-sm-2">Historic rival team</label>
+                        <select class="form-control" id="historicalRivalTeam" name="historicalRivalTeam" [(ngModel)]="team.idHistoricalRivalTeam">
+                            <option value="undefined" selected>Select</option>
+                            <option *ngFor="let n of teams" value="{{n.idHistoricalRivalTeam}}">{{n.name}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6">
+                    <input type="file" (change)="selectFile($event)"/>
+                </div>
+            </div>
+        </fieldset>
+
+
+
+
+        <fieldset class="schedulerborder">
+            <legend class="schedulerborder etiqueta-cabeceratabla">COMPETITIONS WON:</legend>
+            <div class="mat-elevation-z8">
+                <table mat-table [dataSource]="dataSource" matSort style="width: 100%">
+                    <ng-container matColumnDef="name">
+                        <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+                        <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="yearCompetition">
+                        <mat-header-cell class="" *matHeaderCellDef mat-sort-header> Year </mat-header-cell>
+                        <mat-cell *matCellDef="let row"> {{row.yearCompetition}} </mat-cell>
+                    </ng-container>
+
+
+                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{hovered: row.hovered, highlighted: row.highlighted}" (click)="highlight(row)" (mouseover)="row.hovered = true" (mouseout)="row.hovered = false"></mat-row>
+                </table>
+
+                <mat-paginator [pageSize]="paginationService.pageCount" [pageSizeOptions]="paginationService.selectItemsPerPage" [length]="totalCount">
+                </mat-paginator>
+            </div>
+        </fieldset>
+        <div class="detallesbuttons" class="spaceTop">
+            <app-detailsbuttons [returnto]="['/managementteam']" (onSave)="gotoSave()" [canSave]="true">
+            </app-detailsbuttons>
+        </div>
+
+    </fieldset>
+
+</div>

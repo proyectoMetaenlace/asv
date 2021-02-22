@@ -1,0 +1,25 @@
+<form class="h-100 d-flex justify-content-center" #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+    <div class="h-100">
+
+        <div class="login-cabecera">
+            <span>AUTHENTICATION</span>
+        </div>
+
+        <div class="offset-md-4"></div>
+
+        <label for="username" class="mr-sm-2">User</label>
+        <input type="text" id="username" name="username" ngModel class="form-control" required autofocus style="margin-bottom:7%" />
+
+
+        <label for="password" class="mr-sm-2">Password</label>
+        <input type="password" id="password" name="password" ngModel class="form-control" required style="margin-bottom:7%" />
+
+
+        <div style="text-align: center">
+            <button class="btn btn-outline-secondary colorButtons gestionbuttonsfont" type="submit">Login</button>
+            <button class="btn btn-outline-secondary colorButtons gestionbuttonsfont" (click)="goToRegistro()">Register</button>
+        </div>
+        <div class="offset-md-4"></div>
+
+    </div>
+</form>

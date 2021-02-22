@@ -1,0 +1,47 @@
+<div class="componentcontainer">
+    <fieldset class="schedulerborder">
+        <legend class="schedulerborder etiqueta-cabeceratabla">DETAILS COMPETITION:</legend>
+        <fieldset class="schedulerborder">
+            <legend class="schedulerbordersecondlevel etiqueta-cabeceratabla">{{action}} Competition:</legend>
+            <div class="row">
+                <div class="col-6 col-md-4">
+                    <div class="form-group">
+                        <label for="name" class="mr-sm-2">*Name</label>
+                        <input type="text" class="form-control" id="name" name="name" [(ngModel)]="competition.name" />
+                    </div>
+                </div>
+                <div class="col-6 col-md-4">
+                    <div class="form-group">
+                        <label for="yearCompetition" class="mr-sm-2">*Year</label>
+                        <input type="number" class="form-control" id="yearCompetition" name="yearCompetition" [(ngModel)]="competition.yearCompetition" />
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div>
+                        <label for="idTeamWinner" class="mr-sm-2">Winner</label>
+                        <select class="form-control" id="idTeamWinner" name="idTeamWinner" [(ngModel)]="competition.idTeamWinner">
+                            <option value="undefined" selected>Select</option>
+                            <option *ngFor="let t of teams" value="{{t.name}}">{{t.name}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-12 spaceTop">
+                    <mat-radio-button value="journey" id="radioJourney" (change)="radioChange($event) " style="margin-right: 10px ">
+                        Journey competition
+                    </mat-radio-button>
+                    <mat-radio-button value="playoff" id="radioPlayoff" (change)="radioChange($event) " style="margin-right: 10px ">
+                        Playoff competition
+                    </mat-radio-button>
+                    <mat-radio-button value="journeyPlayoff" id="radioJourneyPlayoff" (change)="radioChange($event)">
+                        Journey and playoff competition
+                    </mat-radio-button>
+                </div>
+            </div>
+        </fieldset>
+
+        <div class="detallesbuttons ">
+            <app-detailsbuttons [returnto]="[ '/managementcompetition'] " (onSave)="gotoSave() " [canSave]="true ">
+            </app-detailsbuttons>
+        </div>
+    </fieldset>
+</div>

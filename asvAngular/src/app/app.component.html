@@ -1,0 +1,43 @@
+<header class="container-fluid">
+    <div class="container">
+        <div>
+            <h3 class="tituloAPP">
+                FOOTBALL COMPETITIONS
+            </h3>
+        </div>
+    </div>
+</header>
+<div class="container-fluid menu-app">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+
+                <button mat-button [matMenuTriggerFor]="menu" class="menufirstlevel boton-menu">MENU</button>
+
+                <mat-menu #menu="matMenu" xPosition="after">
+                    <a [routerLink]="['/managementteam']"><button mat-button class="menusubmenu">TEAMS</button></a>
+                    <a [routerLink]="['/managementcompetition']"><button mat-button
+                            class="menusubmenu">COMPETITIONS</button></a>
+                    <a [routerLink]="['/users']"><button mat-button class="menusubmenu">USERS</button></a>
+                </mat-menu>
+                <div class="pull-right">
+                    <a [routerLink]="['/login']" *ngIf="(!auth.isLoggedIn())">
+                        <button mat-button class="menufirstlevel boton-menu">
+                            LOGIN
+                        </button>
+                    </a>
+                    <a [routerLink]="['/login']" *ngIf="(auth.isLoggedIn())" (click)="logout()">
+                        <button mat-button class="menufirstlevel boton-menu">
+                            EXIT
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <router-outlet></router-outlet>
+    </div>
+</div>

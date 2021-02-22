@@ -1,0 +1,44 @@
+.btnlogin {
+    margin-top: 0.5%;
+    margin-bottom: 0.5%;
+}
+
+.menu-app {
+    background-color: #225d91;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+.tituloAPP {
+    color: rgb(77, 0, 13);
+    text-align: center;
+    margin: auto;
+    font-weight: bold;
+    margin-right: 1%!important;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.boton-menu {
+    color: #fff;
+    height: 100%;
+    border-radius: 5px !important;
+    background-color: #225d91;
+}
+
+.boton-menu:hover {
+    background-color: #3CA1FC;
+    color: #fff;
+}
+
+.menusubmenu {
+    font-family: 'Montserrat', sans-serif;
+    color: #225d91;
+    font-weight: normal;
+    width: 100%;
+    text-align: left !important;
+}
+
+.menufirstlevel {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+}

@@ -1,0 +1,10 @@
+<div class="btn-group pull-right" role="group" aria-label="...">
+    <button (click)="gotoSave()" class="btn btn-outline-secondary colorDetails" *ngIf="canSave">
+        SAVE
+    </button>
+    <button type="button" style="padding: 0" class="btn btn-outline-secondary colorDetails">
+        <a class="btn btn-outline-secondary" [routerLink]="returnto">
+            BACK
+        </a>
+    </button>
+</div>
